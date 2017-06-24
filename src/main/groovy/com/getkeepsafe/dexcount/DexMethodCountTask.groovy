@@ -18,6 +18,7 @@ package com.getkeepsafe.dexcount
 
 import com.android.annotations.Nullable
 import com.android.build.gradle.api.BaseVariantOutput
+import com.getkeepsafe.dexcount.console.Console
 import groovy.transform.stc.ClosureParams
 import groovy.transform.stc.SimpleType
 import org.gradle.api.DefaultTask
@@ -26,6 +27,8 @@ import org.gradle.api.logging.LogLevel
 import org.gradle.api.logging.Logger
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.ParallelizableTask
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 
 abstract class DexMethodCountTaskBase extends DefaultTask {

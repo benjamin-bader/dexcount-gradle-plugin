@@ -51,6 +51,9 @@ dependencies {
     compile gradleApi()
     compile 'com.google.code.gson:gson:2.6.2'
 
+    compile 'org.fusesource.jansi:jansi:1.13'
+    compile 'net.rubygrapefruit:native-platform:0.10'
+
     compileOnly 'com.android.tools.build:gradle:3.0.0-alpha3'
 
     testCompile 'com.android.tools.build:gradle:3.0.0-alpha3'

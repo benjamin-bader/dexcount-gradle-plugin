@@ -25,6 +25,7 @@ import com.android.build.gradle.api.LibraryVariant
 import com.android.build.gradle.api.TestVariant
 import com.android.builder.Version
 import com.android.repository.Revision
+import com.getkeepsafe.dexcount.console.ConsoleFactory
 import com.getkeepsafe.dexcount.sdkresolver.SdkResolver
 import groovy.transform.stc.ClosureParams
 import groovy.transform.stc.SimpleType
@@ -36,6 +37,8 @@ import org.gradle.api.Task
 class DexMethodCountPlugin implements Plugin<Project> {
     static File sdkLocation = SdkResolver.resolve(null)
 
+    private boolean shouldUseColorOutput;
+
     @Override
     void apply(Project project) {
         if (!isAtLeastJavaEight()) {
@@ -46,6 +49,10 @@ class DexMethodCountPlugin implements Plugin<Project> {
             project.logger.info("Instant Run detected; disabling dexcount")
             return
         }
+        NativeServices.isAnsiTerminal()
+
+        sdkLocation = SdkResolver.resolve(project);
+        shouldUseColorOutput = GradleApi.shouldUseColorOutput(project.gradle.startParameter);
 
         try {
             Class.forName("com.android.builder.Version")

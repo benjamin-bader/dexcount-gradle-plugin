@@ -24,7 +24,13 @@ final class GradleApi {
      */
     static boolean isShowStacktrace(StartParameter startParam) {
         Enum stacktrace = (Enum) InvokerHelper.invokeMethod(
-                startParam, "getShowStacktrace", null)
-        return "INTERNAL_EXCEPTIONS" != stacktrace.name()
+                startParam, "getShowStacktrace", null);
+        return "INTERNAL_EXCEPTIONS" != stacktrace.name();
+    }
+
+    static boolean shouldUseColorOutput(StartParameter startParam) {
+        Enum consoleOutput = (Enum) InvokerHelper.invokeMethod(
+                startParam, "getConsoleOutput", null);
+        return "Plain" != consoleOutput.name()
     }
 }
